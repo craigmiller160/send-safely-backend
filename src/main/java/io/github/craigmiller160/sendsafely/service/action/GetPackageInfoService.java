@@ -1,13 +1,18 @@
 package io.github.craigmiller160.sendsafely.service.action;
 
 import com.sendsafely.SendSafely;
+import io.github.craigmiller160.sendsafely.log.Logger;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.GetPackageInfoArguments;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class GetPackageInfoService implements ActionService {
+  private final Logger logger;
+
   @Override
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
     final var extractedArguments = extractArguments(arguments);
@@ -17,17 +22,17 @@ public class GetPackageInfoService implements ActionService {
             extractedArguments.apiKey(),
             extractedArguments.apiSecret());
     final var packageInfo = sendSafely.getPackageInformation(extractedArguments.packageId());
-    System.out.printf("Getting Info for SendSafely package: %s%n", packageInfo.getPackageId());
-    System.out.printf("Files (%d)%n", packageInfo.getFiles().size());
+    logger.printf("Getting Info for SendSafely package: %s%n", packageInfo.getPackageId());
+    logger.printf("Files (%d)%n", packageInfo.getFiles().size());
     packageInfo
         .getFiles()
-        .forEach(file -> System.out.printf("  %s = %s%n", file.getFileId(), file.getFileName()));
-    System.out.printf("Recipients (%d)%n", packageInfo.getRecipients().size());
+        .forEach(file -> logger.printf("  %s = %s%n", file.getFileId(), file.getFileName()));
+    logger.printf("Recipients (%d)%n", packageInfo.getRecipients().size());
     packageInfo
         .getRecipients()
         .forEach(
             recipient ->
-                System.out.printf("  %s = %s%n", recipient.getRecipientId(), recipient.getEmail()));
+                logger.printf("  %s = %s%n", recipient.getRecipientId(), recipient.getEmail()));
   }
 
   private GetPackageInfoArguments extractArguments(final Map<ArgumentKey, String> arguments) {

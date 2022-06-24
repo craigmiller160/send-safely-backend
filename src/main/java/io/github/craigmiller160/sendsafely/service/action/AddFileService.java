@@ -2,15 +2,20 @@ package io.github.craigmiller160.sendsafely.service.action;
 
 import com.sendsafely.SendSafely;
 import com.sendsafely.file.DefaultFileManager;
+import io.github.craigmiller160.sendsafely.log.Logger;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.AddFileArguments;
 import io.github.craigmiller160.sendsafely.utils.ProgressCallback;
 import java.io.File;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AddFileService implements ActionService {
+  private final Logger logger;
+
   @Override
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
     final var extractedArguments = extractArguments(arguments);
@@ -26,8 +31,8 @@ public class AddFileService implements ActionService {
             packageInfo.getPackageId(),
             packageInfo.getKeyCode(),
             fileManager,
-            new ProgressCallback());
-    System.out.printf(
+            new ProgressCallback(logger));
+    logger.printf(
         "Successfully uploaded file to SendSafely. File ID: %s%n", sendSafelyFile.getFileId());
   }
 

@@ -1,13 +1,18 @@
 package io.github.craigmiller160.sendsafely.service.action;
 
 import com.sendsafely.SendSafely;
+import io.github.craigmiller160.sendsafely.log.Logger;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.AddRecipientArguments;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AddRecipientService implements ActionService {
+  private final Logger logger;
+
   @Override
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
     final var extractedArguments = extractArguments(arguments);
@@ -19,7 +24,7 @@ public class AddRecipientService implements ActionService {
     final var recipient =
         sendSafely.addRecipient(
             extractedArguments.packageId(), extractedArguments.recipientEmail());
-    System.out.printf(
+    logger.printf(
         "Added new recipient to SendSafely. Recipient ID: %s%n", recipient.getRecipientId());
   }
 

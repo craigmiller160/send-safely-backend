@@ -1,13 +1,17 @@
 package io.github.craigmiller160.sendsafely.service.action;
 
 import com.sendsafely.SendSafely;
+import io.github.craigmiller160.sendsafely.log.Logger;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.CreatePackageArguments;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CreatePackageService implements ActionService {
+  private final Logger logger;
 
   @Override
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
@@ -18,8 +22,7 @@ public class CreatePackageService implements ActionService {
             extractedArguments.apiKey(),
             extractedArguments.apiSecret());
     final var sendSafelyPackage = sendSafely.createPackage();
-    System.out.printf(
-        "Created new SendSafely Package with ID: %s%n", sendSafelyPackage.getPackageId());
+    logger.printf("Created new SendSafely Package with ID: %s%n", sendSafelyPackage.getPackageId());
   }
 
   private CreatePackageArguments extractArguments(final Map<ArgumentKey, String> arguments) {
