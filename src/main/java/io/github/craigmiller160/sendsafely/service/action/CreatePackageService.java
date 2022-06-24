@@ -1,5 +1,6 @@
 package io.github.craigmiller160.sendsafely.service.action;
 
+import com.sendsafely.SendSafely;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.CreatePackageArguments;
 import java.util.Map;
@@ -9,8 +10,16 @@ import org.springframework.stereotype.Service;
 public class CreatePackageService implements ActionService {
 
   @Override
-  public void perform(final Map<ArgumentKey, String> arguments) {
+  public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
     final var createPackageArguments = extractArguments(arguments);
+    final var sendSafely =
+        new SendSafely(
+            ActionService.SEND_SAFELY_URL,
+            createPackageArguments.apiKey(),
+            createPackageArguments.apiSecret());
+    final var sendSafelyPackage = sendSafely.createPackage();
+    System.out.printf(
+        "Created new SendSafely Package with ID: %s%n", sendSafelyPackage.getPackageId());
   }
 
   private CreatePackageArguments extractArguments(final Map<ArgumentKey, String> arguments) {
