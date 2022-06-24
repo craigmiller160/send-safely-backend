@@ -5,6 +5,7 @@ public enum ArgumentKey {
   API_SECRET,
   ACTION,
   PACKAGE_ID,
+  KEY_CODE,
   SS_ID,
   FILE_PATH,
   RECIPIENT;

@@ -22,6 +22,24 @@ The application can be run with a simple command. The arguments are a series of 
 gradle bootRun --args='ARGUMENTS GO HERE'
 ```
 
+### Create Package
+
+Create a brand new package and output the ID & KeyCode of the package. Save these values for other commands.
+
+**Arguments**
+
+| Argument   | Description               |
+|------------|---------------------------|
+| API_KEY    | The SendSafely API Key    |
+| API_SECRET | The SendSafely API Secret |
+| ACTION     | Must be `CREATE_PACKAGE`  |
+
+**Example**
+
+```bash
+gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=CREATE_PACKAGE'
+```
+
 ### Get Package Info
 
 Get information on an existing package. This is valuable for monitoring the full state of a package as it is incrementally constructed.
@@ -39,24 +57,6 @@ Get information on an existing package. This is valuable for monitoring the full
 
 ```bash
 gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=GET_PACKAGE_INFO PACKAGE_ID=###'
-```
-
-### Create Package
-
-Create a brand new package and output the ID of the package.
-
-**Arguments**
-
-| Argument   | Description               |
-|------------|---------------------------|
-| API_KEY    | The SendSafely API Key    |
-| API_SECRET | The SendSafely API Secret |
-| ACTION     | Must be `CREATE_PACKAGE`  |
-
-**Example**
-
-```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=CREATE_PACKAGE'
 ```
 
 ### Add File to Package

@@ -4,7 +4,8 @@ import io.github.craigmiller160.sendsafely.model.Action;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import java.io.File;
 
-public record AddFileArguments(String apiKey, String apiSecret, String packageId, String filePath)
+public record AddFileArguments(
+    String apiKey, String apiSecret, String packageId, String keyCode, String filePath)
     implements Arguments {
   @Override
   public Action action() {
@@ -16,6 +17,10 @@ public record AddFileArguments(String apiKey, String apiSecret, String packageId
     DefaultArgumentValidator.validate(this);
     if (packageId == null) {
       DefaultArgumentValidator.missing(ArgumentKey.PACKAGE_ID);
+    }
+
+    if (keyCode == null) {
+      DefaultArgumentValidator.missing(ArgumentKey.KEY_CODE);
     }
 
     if (filePath == null) {

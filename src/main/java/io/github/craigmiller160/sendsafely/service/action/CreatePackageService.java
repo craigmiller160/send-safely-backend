@@ -22,7 +22,9 @@ public class CreatePackageService implements ActionService {
             extractedArguments.apiKey(),
             extractedArguments.apiSecret());
     final var sendSafelyPackage = sendSafely.createPackage();
-    logger.printf("Created new SendSafely Package with ID: %s%n", sendSafelyPackage.getPackageId());
+    logger.printf(
+        "Created new SendSafely Package. ID: %s KeyCode: %s%n",
+        sendSafelyPackage.getPackageId(), sendSafelyPackage.getKeyCode());
   }
 
   private CreatePackageArguments extractArguments(final Map<ArgumentKey, String> arguments) {
