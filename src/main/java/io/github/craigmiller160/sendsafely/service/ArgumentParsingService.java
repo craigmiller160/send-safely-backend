@@ -3,7 +3,9 @@ package io.github.craigmiller160.sendsafely.service;
 import io.github.craigmiller160.sendsafely.model.Arguments;
 import io.github.craigmiller160.sendsafely.utils.ArgumentKey;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Set;
+import org.apache.commons.collections4.SetUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +22,12 @@ public class ArgumentParsingService {
   }
 
   private Arguments argumentsReducer(final Arguments argumentsA, final Arguments argumentsB) {
-    return null;
+    final String apiKey = Optional.ofNullable(argumentsB.apiKey()).orElse(argumentsA.apiKey());
+    final String apiSecret =
+        Optional.ofNullable(argumentsB.apiSecret()).orElse(argumentsA.apiKey());
+    final Set<String> filePaths = SetUtils.union(argumentsA.filePaths(), argumentsB.filePaths());
+    final Set<String> recipients = SetUtils.union(argumentsA.recipients(), argumentsB.recipients());
+    return new Arguments(apiKey, apiSecret, filePaths, recipients);
   }
 
   private Arguments argPairToArguments(final ArgPair argPair) {

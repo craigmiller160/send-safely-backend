@@ -22,6 +22,7 @@ repositories {
 dependencies {
     val junitVersion = "5.8.2"
     val sendSafelyVersion = "3.1.7"
+    val commonsCollectionsVersion = "4.4"
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
@@ -29,6 +30,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
+    implementation("org.apache.commons:commons-collections4:$commonsCollectionsVersion")
 }
 
 tasks {
