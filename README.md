@@ -71,6 +71,7 @@ Add a file to an existing package.
 | API_SECRET | The SendSafely API Secret                    |
 | ACTION     | Must be `ADD_FILE`                           |
 | PACKAGE_ID | The ID of the SendSafely Package             |
+| KEY_CODE   | The KeyCode for the SendSafely Package       |
 | FILE_PATH  | The path to the file on the local filesystem |
 
 **Example**
@@ -164,12 +165,13 @@ Finalize a pending package
 
 **Arguments**
 
-| Argument   | Description                      |
-|------------|----------------------------------|
-| API_KEY    | The SendSafely API Key           |
-| API_SECRET | The SendSafely API Secret        |
-| ACTION     | Must be `FINALIZE_PACKAGE`       |
-| PACKAGE_ID | The ID of the SendSafely Package |
+| Argument   | Description                           |
+|------------|---------------------------------------|
+| API_KEY    | The SendSafely API Key                |
+| API_SECRET | The SendSafely API Secret             |
+| ACTION     | Must be `FINALIZE_PACKAGE`            |
+| PACKAGE_ID | The ID of the SendSafely Package      |
+ | KEY_CODE   | The KeyCode of the SendSafely Package |
 
 **Example**
 
