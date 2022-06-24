@@ -18,11 +18,11 @@ public class GetPackageInfoService implements ActionService {
             extractedArguments.apiSecret());
     final var packageInfo = sendSafely.getPackageInformation(extractedArguments.packageId());
     System.out.printf("Getting Info for SendSafely package: %s%n", packageInfo.getPackageId());
-    System.out.println("Files");
+    System.out.printf("Files (%d)%n", packageInfo.getFiles().size());
     packageInfo
         .getFiles()
         .forEach(file -> System.out.printf("  %s = %s%n", file.getFileId(), file.getFileName()));
-    System.out.println("Recipients");
+    System.out.printf("Recipients (%d)%n", packageInfo.getRecipients().size());
     packageInfo
         .getRecipients()
         .forEach(
