@@ -35,7 +35,8 @@ public class FinalizePackageService implements ActionService {
         new FinalizePackageArguments(
             arguments.get(ArgumentKey.API_KEY),
             arguments.get(ArgumentKey.API_SECRET),
-            arguments.get(ArgumentKey.PACKAGE_ID));
+            arguments.get(ArgumentKey.PACKAGE_ID),
+            arguments.get(ArgumentKey.KEY_CODE));
     extractedArguments.validate();
     return extractedArguments;
   }
