@@ -8,10 +8,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ActionServiceManager {
   private final CreatePackageService createPackageService;
+  private final AddFileService addFileService;
 
   public ActionService getActionService(final Action action) {
     return switch (action) {
       case CREATE_PACKAGE -> createPackageService;
+      case ADD_FILE -> addFileService;
       default -> throw new RuntimeException();
     };
   }
