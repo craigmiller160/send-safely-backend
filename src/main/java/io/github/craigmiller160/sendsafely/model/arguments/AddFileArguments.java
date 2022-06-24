@@ -2,6 +2,7 @@ package io.github.craigmiller160.sendsafely.model.arguments;
 
 import io.github.craigmiller160.sendsafely.model.Action;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
+import java.io.File;
 
 public record AddFileArguments(String apiKey, String apiSecret, String packageId, String filePath)
     implements Arguments {
@@ -19,6 +20,11 @@ public record AddFileArguments(String apiKey, String apiSecret, String packageId
 
     if (filePath == null) {
       throw new RuntimeException("Must include %s".formatted(ArgumentKey.FILE_PATH));
+    }
+
+    final var file = new File(filePath);
+    if (!file.exists() || !file.isFile()) {
+      throw new RuntimeException("File path is invalid: %s".formatted(filePath));
     }
   }
 }
