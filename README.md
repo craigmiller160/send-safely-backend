@@ -2,6 +2,10 @@
 
 This is the backend coding assessment for Craig Miller's interview with Send Safely.
 
+## About Undo Functionality
+
+Since the `SendSafely` API does not appear to natively implement "undo" functionality, I chose to simply provide the ability to both add and remove all features of a package. This is the simplest solution to allow the end users to undo mistakes.
+
 ## How to Run 
 
 The application can be run with a simple command. The arguments are a series of key/value pairs separated by an `=`. Different actions require different arguments.
@@ -65,4 +69,24 @@ Add a file to an existing package.
 
 ```bash
 gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_FILE PACKAGE_ID=### FILE_PATH=###'
+```
+
+### Add Recipient to Package
+
+Add a recipient to an existing package.
+
+**Arguments**
+
+| Argument   | Description                                               |
+|------------|-----------------------------------------------------------|
+| API_KEY    | The SendSafely API Key                                    |
+| API_SECRET | The SendSafely API Secret                                 |
+| ACTION     | Must be `ADD_RECIPIENT`                                   |
+| PACKAGE_ID | The ID of the SendSafely Package to get information about |
+| RECIPIENT  | The email address of the recipient                        |
+
+**Example**
+
+```bash
+gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_RECIPIENT PACKAGE_ID=### RECIPIENT=###'
 ```
