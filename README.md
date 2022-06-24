@@ -14,6 +14,10 @@ This application is designed to take in a series of arguments that provide SendS
 
 Since the `SendSafely` API does not appear to natively implement "undo" functionality, I chose to simply provide the ability to both add and remove all features of a package. This is the simplest solution to allow the end users to undo mistakes.
 
+## About Tests
+
+I have the foundation of a test suite in place here, however with limited time to complete this exercise I did not fully build out the integration tests I had planned. For an application like this, I would craft tests that would bypass the initial CLI runner and instead pass sets of arguments directly to the SpringBoot container. I would also mock the SendSafely communication, or if possible have some kind of embedded mock server to fully validate that communication. Either way, the intent would be to validate that a given command works as expected end-to-end.
+
 ## How to Run 
 
 The application can be run with a simple command. The arguments are a series of key/value pairs separated by an `=`. Different actions require different arguments.
