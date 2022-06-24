@@ -29,6 +29,7 @@ dependencies {
     implementation("com.sendsafely:sendsafely-java-api:$sendSafelyVersion")
     implementation("org.springframework.boot:spring-boot-starter")
     compileOnly("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.apache.commons:commons-collections4:$commonsCollectionsVersion")
 }
