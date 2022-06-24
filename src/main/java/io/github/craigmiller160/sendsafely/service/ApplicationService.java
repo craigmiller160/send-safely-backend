@@ -1,20 +1,16 @@
-package io.github.craigmiller160.sendsafely;
+package io.github.craigmiller160.sendsafely.service;
 
-import io.github.craigmiller160.sendsafely.service.ArgumentParsingService;
 import io.github.craigmiller160.sendsafely.service.action.ActionServiceManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
-public class ApplicationRunner implements CommandLineRunner {
-  // TODO probably combine with application
+public class ApplicationService {
   private final ArgumentParsingService argumentParsingService;
   private final ActionServiceManager actionServiceManager;
 
-  @Override
-  public void run(final String[] args) throws Exception {
+  public void runApplication(final String[] args) throws Exception {
     final var parsedArguments = argumentParsingService.parseArguments(args);
     final var action = argumentParsingService.getAction(parsedArguments);
     final var actionService = actionServiceManager.getActionService(action);
