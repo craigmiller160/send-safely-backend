@@ -24,7 +24,7 @@ public class FinalizePackageService implements ActionService {
 
     final var packageInfo = sendSafely.getPackageInformation(extractedArguments.packageId());
     final var url =
-        sendSafely.finalizePackage(packageInfo.getPackageId(), packageInfo.getKeyCode());
+        sendSafely.finalizePackage(packageInfo.getPackageId(), extractedArguments.keyCode());
     logger.printf(
         "Successfully finalized package %s. URL: %s%n",
         extractedArguments.packageId(), url.getSecureLink());
