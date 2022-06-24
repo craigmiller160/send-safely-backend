@@ -28,7 +28,7 @@ dependencies {
     implementation("com.sendsafely:sendsafely-java-api:$sendSafelyVersion")
     implementation("org.springframework.boot:spring-boot-starter")
     compileOnly("org.projectlombok:lombok")
-
+    annotationProcessor("org.projectlombok:lombok")
 }
 
 tasks {
