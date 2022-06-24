@@ -8,6 +8,5 @@ public enum Action {
   ADD_FILE,
   REMOVE_FILE,
   FINALIZE_PACKAGE,
-  DELETE_PACKAGE,
-  UNDO;
+  DELETE_PACKAGE;
 }
