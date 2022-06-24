@@ -8,15 +8,19 @@ import lombok.NoArgsConstructor;
 public class DefaultArgumentValidator {
   public static void validate(final Arguments arguments) {
     if (arguments.apiKey() == null) {
-      throw new RuntimeException("Must include %s".formatted(ArgumentKey.API_KEY.name()));
+      missing(ArgumentKey.API_KEY);
     }
 
     if (arguments.apiSecret() == null) {
-      throw new RuntimeException("Must include %s".formatted(ArgumentKey.API_SECRET.name()));
+      missing(ArgumentKey.API_SECRET);
     }
 
     if (arguments.action() == null) {
-      throw new RuntimeException("Must include %s".formatted(ArgumentKey.ACTION.name()));
+      missing(ArgumentKey.ACTION);
     }
+  }
+
+  public static void missing(final ArgumentKey argumentKey) {
+    throw new RuntimeException("Must include %s".formatted(argumentKey.name()));
   }
 }

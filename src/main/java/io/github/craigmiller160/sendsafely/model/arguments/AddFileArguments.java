@@ -15,11 +15,11 @@ public record AddFileArguments(String apiKey, String apiSecret, String packageId
   public void validate() {
     DefaultArgumentValidator.validate(this);
     if (packageId == null) {
-      throw new RuntimeException("Must include %s".formatted(ArgumentKey.PACKAGE_ID));
+      DefaultArgumentValidator.missing(ArgumentKey.PACKAGE_ID);
     }
 
     if (filePath == null) {
-      throw new RuntimeException("Must include %s".formatted(ArgumentKey.FILE_PATH));
+      DefaultArgumentValidator.missing(ArgumentKey.FILE_PATH);
     }
 
     final var file = new File(filePath);
