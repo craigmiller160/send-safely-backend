@@ -10,12 +10,14 @@ public class ActionServiceManager {
   private final CreatePackageService createPackageService;
   private final AddFileService addFileService;
   private final GetPackageInfoService getPackageInfoService;
+  private final AddRecipientService addRecipientService;
 
   public ActionService getActionService(final Action action) {
     return switch (action) {
       case CREATE_PACKAGE -> createPackageService;
       case ADD_FILE -> addFileService;
       case GET_PACKAGE_INFO -> getPackageInfoService;
+      case ADD_RECIPIENT -> addRecipientService;
       default -> throw new RuntimeException();
     };
   }
