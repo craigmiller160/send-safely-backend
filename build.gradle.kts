@@ -20,12 +20,12 @@ repositories {
 }
 
 dependencies {
-    val junitVersion = "5.8.2"
     val sendSafelyVersion = "3.1.7"
     val commonsCollectionsVersion = "4.4"
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude("org.junit.vintage", "junit-vintage-engine")
+    }
     implementation("com.sendsafely:sendsafely-java-api:$sendSafelyVersion")
     implementation("org.springframework.boot:spring-boot-starter")
     compileOnly("org.projectlombok:lombok")
