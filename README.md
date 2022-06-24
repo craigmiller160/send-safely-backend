@@ -2,6 +2,10 @@
 
 This is the backend coding assessment for Craig Miller's interview with Send Safely.
 
+## Basic Overview
+
+This application is designed to take in a series of arguments that provide SendSafely credentials, an action, and any additional information required for that action. At any point in time the current status of the package can be reviewed using the `GET_PACKAGE_INFO` action. This allows for incrementally constructing and managing the state of a package prior to sending it.
+
 ## About Undo Functionality
 
 Since the `SendSafely` API does not appear to natively implement "undo" functionality, I chose to simply provide the ability to both add and remove all features of a package. This is the simplest solution to allow the end users to undo mistakes.
