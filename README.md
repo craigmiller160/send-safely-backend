@@ -2,6 +2,10 @@
 
 This is the backend coding assessment for Craig Miller's interview with Send Safely.
 
+## Compatibility
+
+This application was written for JDK 18.
+
 ## Basic Overview
 
 This application is designed to take in a series of arguments that provide SendSafely credentials, an action, and any additional information required for that action. At any point in time the current status of the package can be reviewed using the `GET_PACKAGE_INFO` action. This allows for incrementally constructing and managing the state of a package prior to sending it.
