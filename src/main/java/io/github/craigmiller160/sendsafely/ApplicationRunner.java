@@ -18,5 +18,6 @@ public class ApplicationRunner implements CommandLineRunner {
     final var parsedArguments = argumentParsingService.parseArguments(args);
     final var action = argumentParsingService.getAction(parsedArguments);
     final var actionService = actionServiceManager.getActionService(action);
+    actionService.perform(parsedArguments);
   }
 }
