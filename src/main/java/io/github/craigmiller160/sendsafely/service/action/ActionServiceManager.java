@@ -13,6 +13,8 @@ public class ActionServiceManager {
   private final AddRecipientService addRecipientService;
   private final RemoveFileService removeFileService;
   private final RemoveRecipientService removeRecipientService;
+  private final DeletePackageService deletePackageService;
+  private final FinalizePackageService finalizePackageService;
 
   public ActionService getActionService(final Action action) {
     return switch (action) {
@@ -22,7 +24,8 @@ public class ActionServiceManager {
       case ADD_RECIPIENT -> addRecipientService;
       case REMOVE_FILE -> removeFileService;
       case REMOVE_RECIPIENT -> removeRecipientService;
-      default -> throw new RuntimeException();
+      case DELETE_PACKAGE -> deletePackageService;
+      case FINALIZE_PACKAGE -> finalizePackageService;
     };
   }
 }
