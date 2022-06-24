@@ -1,5 +1,6 @@
 package io.github.craigmiller160.sendsafely.service.action;
 
+import com.sendsafely.SendSafely;
 import io.github.craigmiller160.sendsafely.log.Logger;
 import io.github.craigmiller160.sendsafely.model.ArgumentKey;
 import io.github.craigmiller160.sendsafely.model.arguments.FinalizePackageArguments;
@@ -13,7 +14,21 @@ public class FinalizePackageService implements ActionService {
   private final Logger logger;
 
   @Override
-  public void perform(final Map<ArgumentKey, String> arguments) throws Exception {}
+  public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
+    final var extractedArguments = extractArguments(arguments);
+    final var sendSafely =
+        new SendSafely(
+            ActionService.SEND_SAFELY_URL,
+            extractedArguments.apiKey(),
+            extractedArguments.apiSecret());
+
+    final var packageInfo = sendSafely.getPackageInformation(extractedArguments.packageId());
+    final var url =
+        sendSafely.finalizePackage(packageInfo.getPackageId(), packageInfo.getKeyCode());
+    logger.printf(
+        "Successfully finalized package %s. URL: %s%n",
+        extractedArguments.packageId(), url.getSecureLink());
+  }
 
   private FinalizePackageArguments extractArguments(final Map<ArgumentKey, String> arguments) {
     final var extractedArguments =
