@@ -27,6 +27,8 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     implementation("com.sendsafely:sendsafely-java-api:$sendSafelyVersion")
     implementation("org.springframework.boot:spring-boot-starter")
+    compileOnly("org.projectlombok:lombok")
+
 }
 
 tasks {

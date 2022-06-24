@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Runner {
+public class SendSafelyApplication {
   public static void main(final String[] args) {
-    SpringApplication.run(Runner.class, args);
+    SpringApplication.run(SendSafelyApplication.class, args);
   }
 }
