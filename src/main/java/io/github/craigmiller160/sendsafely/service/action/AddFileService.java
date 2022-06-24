@@ -29,7 +29,7 @@ public class AddFileService implements ActionService {
     final var sendSafelyFile =
         sendSafely.encryptAndUploadFile(
             packageInfo.getPackageId(),
-            packageInfo.getKeyCode(),
+            extractedArguments.keyCode(),
             fileManager,
             new ProgressCallback(logger));
     logger.printf(
@@ -39,8 +39,11 @@ public class AddFileService implements ActionService {
   private AddFileArguments extractArguments(final Map<ArgumentKey, String> arguments) {
     final var extractedArguments =
         new AddFileArguments(
-            arguments.get(ArgumentKey.API_KEY), arguments.get(ArgumentKey.API_SECRET),
-            arguments.get(ArgumentKey.PACKAGE_ID), arguments.get(ArgumentKey.FILE_PATH));
+            arguments.get(ArgumentKey.API_KEY),
+            arguments.get(ArgumentKey.API_SECRET),
+            arguments.get(ArgumentKey.PACKAGE_ID),
+            arguments.get(ArgumentKey.KEY_CODE),
+            arguments.get(ArgumentKey.FILE_PATH));
     extractedArguments.validate();
     return extractedArguments;
   }
