@@ -11,19 +11,19 @@ public class CreatePackageService implements ActionService {
 
   @Override
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {
-    final var createPackageArguments = extractArguments(arguments);
+    final var extractedArguments = extractArguments(arguments);
     final var sendSafely =
         new SendSafely(
             ActionService.SEND_SAFELY_URL,
-            createPackageArguments.apiKey(),
-            createPackageArguments.apiSecret());
+            extractedArguments.apiKey(),
+            extractedArguments.apiSecret());
     final var sendSafelyPackage = sendSafely.createPackage();
     System.out.printf(
         "Created new SendSafely Package with ID: %s%n", sendSafelyPackage.getPackageId());
   }
 
   private CreatePackageArguments extractArguments(final Map<ArgumentKey, String> arguments) {
-    final CreatePackageArguments extractedArguments =
+    final var extractedArguments =
         new CreatePackageArguments(
             arguments.get(ArgumentKey.API_KEY), arguments.get(ArgumentKey.API_SECRET));
     extractedArguments.validate();
