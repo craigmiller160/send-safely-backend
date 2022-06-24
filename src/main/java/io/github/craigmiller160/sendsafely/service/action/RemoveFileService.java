@@ -16,7 +16,11 @@ public class RemoveFileService implements ActionService {
   public void perform(final Map<ArgumentKey, String> arguments) throws Exception {}
 
   private RemoveFileArguments extractArguments(final Map<ArgumentKey, String> arguments) {
-    //    final var extractedArguments = new RemoveFileArguments()
-    return null;
+    final var extractedArguments =
+        new RemoveFileArguments(
+            arguments.get(ArgumentKey.API_KEY), arguments.get(ArgumentKey.API_SECRET),
+            arguments.get(ArgumentKey.PACKAGE_ID), arguments.get(ArgumentKey.SS_ID));
+    extractedArguments.validate();
+    return extractedArguments;
   }
 }
