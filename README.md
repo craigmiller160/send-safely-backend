@@ -23,7 +23,7 @@ I have the foundation of a test suite in place here, however with limited time t
 The application can be run with a simple command. The arguments are a series of key/value pairs separated by an `=`. Different actions require different arguments.
 
 ```bash
-gradle bootRun --args='ARGUMENTS GO HERE'
+gradlew bootRun --args='ARGUMENTS GO HERE'
 ```
 
 ### Create Package
@@ -41,7 +41,7 @@ Create a brand new package and output the ID & KeyCode of the package. Save thes
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=CREATE_PACKAGE'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=CREATE_PACKAGE'
 ```
 
 ### Get Package Info
@@ -60,7 +60,7 @@ Get information on an existing package. This is valuable for monitoring the full
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=GET_PACKAGE_INFO PACKAGE_ID=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=GET_PACKAGE_INFO PACKAGE_ID=###'
 ```
 
 ### Add File to Package
@@ -81,7 +81,7 @@ Add a file to an existing package.
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_FILE PACKAGE_ID=### FILE_PATH=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_FILE PACKAGE_ID=### FILE_PATH=###'
 ```
 
 ### Add Recipient to Package
@@ -101,7 +101,7 @@ Add a recipient to an existing package.
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_RECIPIENT PACKAGE_ID=### RECIPIENT=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=ADD_RECIPIENT PACKAGE_ID=### RECIPIENT=###'
 ```
 
 ### Remove File from Package
@@ -121,7 +121,7 @@ Remove a file from an existing package.
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=REMOVE_FILE PACKAGE_ID=### SS_ID=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=REMOVE_FILE PACKAGE_ID=### SS_ID=###'
 ```
 
 ### Remove Recipient from Package
@@ -141,7 +141,7 @@ Remove a recipient from an existing package.
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=REMOVE_RECIPIENT PACKAGE_ID=### SS_ID=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=REMOVE_RECIPIENT PACKAGE_ID=### SS_ID=###'
 ```
 
 ### Delete Package
@@ -160,7 +160,7 @@ Delete a pending package.
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=DELETE_PACKAGE PACKAGE_ID=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=DELETE_PACKAGE PACKAGE_ID=###'
 ```
 
 ### Finalize Package
@@ -180,5 +180,5 @@ Finalize a pending package
 **Example**
 
 ```bash
-gradle bootRun --args='API_KEY=### API_SECRET=### ACTION=FINALIZE_PACKAGE PACKAGE_ID=###'
+gradlew bootRun --args='API_KEY=### API_SECRET=### ACTION=FINALIZE_PACKAGE PACKAGE_ID=###'
 ```
